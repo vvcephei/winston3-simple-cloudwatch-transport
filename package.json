@@ -1,0 +1,12 @@
+{
+	"name": "winston3-simple-cloudwatch-transport",
+	"version": "0.0.0",
+	"description": "A super simple Cloudwatch Logs transport for winston 3",
+	"main": "index.js",
+	"dependencies": {
+		"winston": "^3.0.0-rc1",
+		"aws-sdk": "^2.166.0"
+	},
+	"author": "John Roesler <john.roesler@bazaarvoice.com>",
+	"license": "Apache-2.0"
+}

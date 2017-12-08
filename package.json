@@ -7,6 +7,6 @@
 		"winston": "^3.0.0-rc1",
 		"aws-sdk": "^2.166.0"
 	},
-	"author": "John Roesler <john.roesler@bazaarvoice.com>",
+	"author": "John Roesler <john@vvcephei.org>",
 	"license": "Apache-2.0"
 }

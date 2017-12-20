@@ -14,12 +14,12 @@ const precon = (value) => {
   }
 }
 
-const findToPushOffset = (logs) => {
+const findToPushIndex = (logs) => {
   const guess = 50;
   const estimatedSize = JSON.stringify(toPush.slice(0, guess)).length;
-  
+
   if (estimatedSize > 1048576) {
-    return Math.floor(guess / (estimatedSize / 1048576));
+    return Math.max(1, Math.floor(guess / (estimatedSize / 1048576)));
   } else {
     return guess;
   }
@@ -27,7 +27,7 @@ const findToPushOffset = (logs) => {
 
 const pushFn = async (that) => {
   if (that.started && that.logs.length > 0) {
-    const sliceIndex = findToPushOffset(that.logs);
+    const sliceIndex = findToPushIndex(that.logs);
 
     const toPush = that.logs.slice(0, sliceIndex);
 

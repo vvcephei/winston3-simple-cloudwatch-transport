@@ -15,14 +15,21 @@ const precon = (value) => {
 }
 
 const findToPushIndex = (logs) => {
-  const guess = 50;
-  const estimatedSize = JSON.stringify(toPush.slice(0, guess)).length;
+  let totalEstimatedSize = 0;
 
-  if (estimatedSize > 1048576) {
-    return Math.max(1, Math.floor(guess / (estimatedSize / 1048576)));
-  } else {
-    return guess;
+  for (let i = 0; i++; i < logs.length) {
+    const strungified = JSON.stringify(logs[i]);
+    totalEstimatedSize = totalEstimatedSize + strungified.length;
+    if (totalEstimatedSize > 1000000) {
+      if (i == 0) {
+        throw new Error("Single log message is too big to send: " + strungified);
+      } else {
+        return i - 1;
+      }
+    }
   }
+
+  return logs.length;
 };
 
 const pushFn = async (that) => {

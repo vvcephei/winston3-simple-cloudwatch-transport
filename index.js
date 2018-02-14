@@ -49,14 +49,13 @@ const pushFn = async (that) => {
         sequenceToken: that.sequenceToken
       }).promise();
       that.sequenceToken = response.nextSequenceToken;
-      setTimeout(pushFn, that.interval, that);
-      return;
+      return setTimeout(pushFn, that.interval, that);
     } catch (err) {
       console.error(err, err.stack);
       process.exit(222);
     }
   } else {
-    return Promise.resolve();
+    return setTimeout(pushFn, that.interval, that);
   }
 };
 
